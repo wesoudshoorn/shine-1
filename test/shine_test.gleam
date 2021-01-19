@@ -3,7 +3,7 @@ import shine/test.{Test}
 import gleam/should
 import gleam/dynamic
 
-pub fn run_suite_test() {
+pub fn run_test() {
   let suite = [
     TestModule(
       name: "test",
@@ -16,7 +16,7 @@ pub fn run_suite_test() {
       ],
     ),
   ]
-  assert [tuple("test", [result])] = shine.run_suite(suite)
+  assert [tuple("test", [result])] = shine.run(suite)
 
   result
   |> should.be_ok()

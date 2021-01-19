@@ -14,7 +14,7 @@ pub fn init(state) {
   Ok(state)
 }
 
-pub fn run_suite(
+pub fn run(
   suite: List(TestModule),
 ) -> List(tuple(String, List(Result(Dynamic, Exception)))) {
   list.map(
