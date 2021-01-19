@@ -23,25 +23,7 @@ pub fn run_suite(
 pub fn run_test_module(
   test_module: TestModule,
 ) -> tuple(String, List(Result(Dynamic, Exception))) {
-  tuple(test_module.name, list.map(test_module.tests, run_test))
-}
-
-pub fn run_test(test: Test) -> Result(Dynamic, Exception) {
-  case test.run() {
-    Error(e) -> {
-      test.module
-      |> string.append(".")
-      |> string.append(test.name)
-      |> string.append("/0:")
-      |> io.println
-      io.debug(e)
-      Error(e)
-    }
-    Ok(a) -> {
-      io.print(".")
-      Ok(a)
-    }
-  }
+  tuple(test_module.name, list.map(test_module.tests, test.run))
 }
 
 external fn rebar3_shine_init(state) -> state =
